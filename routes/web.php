@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/listings', static function () {
+	return view('listing.listings', ['heading' => 'All Job Listings', 'listings' => Listing::all()]);
+});
+Route::get('/listing/{listing}', static function (Listing $listing) {
+	return view('listing.listing', ['heading' => 'All Job Listings', 'listing' => $listing]);
 });
